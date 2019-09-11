@@ -112,3 +112,64 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function createArticle(title, date,firstParagraph,secondParagraph,thirdParagraph, button){
+  const article =
+  document.createElement('div');
+  const articleTitle =
+  document.createElement('h2');
+  const articleDate =
+  document.createElement('p');
+  const articleContent =
+  document.createElement('div');
+  const articleParagraph1 =
+  document.createElement('p');
+  const articleParagraph2 =
+  document.createElement('p');
+  const articleParagraph3 =
+  document.createElement('p');
+  const articleButtons =
+  document.createElement('span');
+  const articleButtonOpen =
+  document.createElement('button');
+  const articleButtonClosed =
+  document.createElement('button');
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleContent);
+  article.appendChild(articleParagraph1);
+  article.appendChild(articleParagraph2);
+  article.appendChild(articleParagraph3);
+  article.appendChild(articleButtons);
+  articleButtons.appendChild(articleButtonOpen);
+  articleButtons.appendChild(articleButtonClosed);
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleParagraph1.textContent = firstParagraph;
+  articleParagraph2.textContent = secondParagraph;
+  articleParagraph3.textContent = thirdParagraph;
+
+
+  article.classList.add('.article');
+  articleTitle.classList.add('.date');
+  articleButtons.classList.add('.expandButton');
+  articleButtonOpen.classList.add('.article-open');
+  articleButtonOpen.classList.add('.close');
+
+  articleButtons.addEventListener('click',  (e) =>{
+    articleButtonOpen.classList.toggle('hide-btn');
+    articleButtonClosed.classList.toggle('hide-btn');
+    articleContent.classList.toggle('toggle-on');
+  });
+
+
+  return article;
+}
+
+const articles = 
+document.querySelector('.articles');
+
+data.forEach(data =>{
+articles.appendChild(createArticle(data));
+})
